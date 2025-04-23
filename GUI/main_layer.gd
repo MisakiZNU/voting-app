@@ -29,7 +29,7 @@ func validate_matrix_input() -> bool:
 						return false
 				elif (i > 1):
 					if text == "" or not text.is_valid_identifier():
-						res_popup.dialog_text = "❌ Помилка:  У наступних рядках має бути лише 1 символ !"
+						res_popup.dialog_text = "❌ Помилка: У наступних рядках першим символом має бути літерою (або '_') !"
 						res_popup.popup_centered()
 						return false
 			idx = idx + 1
@@ -396,7 +396,6 @@ func _on_copland_rule_button_pressed() -> void:
 			name_row_index += 1
 			if name != "" and not candidates.has(name):
 				candidates.append(name)
-			print(name_row_index)
 		
 	var scores := {}
 	for name in candidates:
