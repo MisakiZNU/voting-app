@@ -1,0 +1,125 @@
+[gd_scene load_steps=2 format=3 uid="uid://xw4jlrbeixd1"]
+
+[ext_resource type="Script" path="res://GUI/main_layer.gd" id="1_wwuuh"]
+
+[node name="MainLayer" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_wwuuh")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.140447, 0.140447, 0.140447, 1)
+
+[node name="InputForBuild" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -101.0
+offset_right = 219.0
+grow_vertical = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="InputForBuild"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="InputForBuild/HBoxContainer"]
+layout_mode = 2
+text = "Кількість груп"
+
+[node name="ColumsInput" type="LineEdit" parent="InputForBuild/HBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="InputForBuild"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="InputForBuild/HBoxContainer2"]
+layout_mode = 2
+text = "Кількість рядків"
+
+[node name="RowsInput" type="LineEdit" parent="InputForBuild/HBoxContainer2"]
+layout_mode = 2
+
+[node name="GenerateTable" type="Button" parent="InputForBuild"]
+layout_mode = 2
+text = "Згенерувати таблицю"
+
+[node name="DeleteTableButton" type="Button" parent="InputForBuild"]
+layout_mode = 2
+text = "Видалити таблицю"
+
+[node name="Methods" type="VBoxContainer" parent="."]
+layout_mode = 1
+offset_right = 360.0
+offset_bottom = 171.0
+
+[node name="RelativeMajorityRuleButton" type="Button" parent="Methods"]
+layout_mode = 2
+text = "Правило відносної більшості"
+
+[node name="RelativeMajorityRuleWithEliminationButton" type="Button" parent="Methods"]
+layout_mode = 2
+text = "Правило відносної більшості з вибуванням"
+
+[node name="SequentialExclusionVotingButton" type="Button" parent="Methods"]
+layout_mode = 2
+text = "Голосування з послідовним винятком"
+
+[node name="CondorcetVotingRuleButton" type="Button" parent="Methods"]
+layout_mode = 2
+text = "Правила голосування Кондорсе"
+
+[node name="BoardVotingRuleButton" type="Button" parent="Methods"]
+layout_mode = 2
+text = "Правило голосування Борда"
+
+[node name="CoplandRuleButton" type="Button" parent="Methods"]
+layout_mode = 2
+text = "Правило Копленда"
+
+[node name="Task1PopUp" type="AcceptDialog" parent="."]
+title = "Результат"
+initial_position = 1
+size = Vector2i(185, 100)
+
+[node name="Task3PopUp" type="AcceptDialog" parent="."]
+title = "Встановіть послідовність голосування"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+custom_minimum_size = Vector2(500, 500)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = -250.0
+offset_right = 250.0
+offset_bottom = 250.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GridContainer" type="GridContainer" parent="ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+
+[connection signal="pressed" from="InputForBuild/GenerateTable" to="." method="_on_generate_table_pressed"]
+[connection signal="pressed" from="InputForBuild/DeleteTableButton" to="." method="_on_delete_table_button_pressed"]
+[connection signal="pressed" from="Methods/RelativeMajorityRuleButton" to="." method="_on_relative_majority_rule_button_pressed"]
+[connection signal="pressed" from="Methods/RelativeMajorityRuleWithEliminationButton" to="." method="_on_relative_majority_rule_with_elimination_button_pressed"]
+[connection signal="pressed" from="Methods/SequentialExclusionVotingButton" to="." method="_on_sequential_exclusion_voting_button_pressed"]
+[connection signal="pressed" from="Methods/CondorcetVotingRuleButton" to="." method="_on_condorcet_voting_rule_button_pressed"]
+[connection signal="pressed" from="Methods/BoardVotingRuleButton" to="." method="_on_board_voting_rule_button_pressed"]
+[connection signal="pressed" from="Methods/CoplandRuleButton" to="." method="_on_copland_rule_button_pressed"]
+[connection signal="confirmed" from="Task3PopUp" to="." method="_on_task_3_pop_up_confirmed"]
